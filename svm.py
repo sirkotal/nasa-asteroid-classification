@@ -9,7 +9,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, ConfusionMatrixDisplay
 
 
-def train_svm(k='linear'):
+def train_svm(k='rbf'):
     # Load the data
     data = pd.read_csv('nasa.csv')
 
