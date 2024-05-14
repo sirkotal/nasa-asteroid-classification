@@ -8,7 +8,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, ConfusionMatrixDisplay
 
 
-def train_knn():
+def train_knn(n=5):
     # Load the data
     data = pd.read_csv('nasa.csv')
 
@@ -44,7 +44,7 @@ def train_knn():
      training_classes,
      testing_classes) = train_test_split(new_data, hazard, test_size=0.25, random_state=1)
 
-    knn_class = neighbors.KNeighborsClassifier(n_neighbors=5)
+    knn_class = neighbors.KNeighborsClassifier(n_neighbors=n)
     knn_class.fit(training_inputs, training_classes)
 
     knn_class.score(testing_inputs, testing_classes)
