@@ -1,13 +1,14 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sb
+from sklearn.neural_network import MLPClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix, ConfusionMatrixDisplay
 
 
-def train_decision_trees():
+def train_ann(layer_n=25, act='relu', slv='adam'):
     # Load the data
     data = pd.read_csv('nasa.csv')
 
@@ -43,17 +44,18 @@ def train_decision_trees():
      training_classes,
      testing_classes) = train_test_split(new_data, hazard, test_size=0.25, random_state=1)
 
-    dt_class = DecisionTreeClassifier(random_state=1)
-    dt_class.fit(training_inputs, training_classes)
+    ann_class = MLPClassifier(hidden_layer_sizes=(layer_n, layer_n, layer_n), activation=act, solver=slv, max_iter=200,
+                              random_state=1)
+    ann_class.fit(training_inputs, training_classes)
 
-    dt_class.score(testing_inputs, testing_classes)
+    ann_class.score(testing_inputs, testing_classes)
 
-    accuracy_score(testing_classes, dt_class.predict(testing_inputs))
+    accuracy_score(testing_classes, ann_class.predict(testing_inputs))
 
-    print(confusion_matrix(testing_classes, dt_class.predict(testing_inputs)))
+    print(confusion_matrix(testing_classes, ann_class.predict(testing_inputs)))
 
     cm_display = ConfusionMatrixDisplay(
-        confusion_matrix=confusion_matrix(testing_classes, dt_class.predict(testing_inputs)))
+        confusion_matrix=confusion_matrix(testing_classes, ann_class.predict(testing_inputs)))
     cm_display.plot()
     plt.xticks([0, 1], ["False", "True"])
     plt.yticks([0, 1], ["False", "True"])
@@ -61,4 +63,4 @@ def train_decision_trees():
     plt.ylabel('Actual Hazard')
     plt.show()
 
-    print(classification_report(testing_classes, dt_class.predict(testing_inputs)))
+    print(classification_report(testing_classes, ann_class.predict(testing_inputs)))

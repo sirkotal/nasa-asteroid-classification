@@ -2,6 +2,7 @@ import sys
 from dtrees import train_decision_trees
 from knn import train_knn
 from svm import train_svm
+from neural import train_ann
 
 
 def main():
@@ -10,7 +11,7 @@ def main():
     #    sys.exit(1)
 
     # algorithm = sys.argv[1]
-    algorithm = "svm"
+    algorithm = "ann"
 
     if algorithm == 'decision_trees':
         train_decision_trees()
@@ -18,6 +19,8 @@ def main():
         train_knn()
     elif algorithm == 'svm':
         train_svm()
+    elif algorithm == 'ann':
+        train_ann()
     else:
         sys.exit(1)
 
