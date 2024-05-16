@@ -12,7 +12,7 @@ def main():
     #    sys.exit(1)
 
     # algorithm = sys.argv[1]
-    algorithm = "nb"
+    algorithm = "decision_trees"
 
     if algorithm == 'decision_trees':
         train_decision_trees()

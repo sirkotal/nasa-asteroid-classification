@@ -1,4 +1,6 @@
 import pandas as pd
+from matplotlib import pyplot as plt
+from sklearn.metrics import ConfusionMatrixDisplay, confusion_matrix, classification_report
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 
@@ -41,3 +43,18 @@ def data_preprocessing():
     hazard = label_encoder.fit_transform(hazard)
 
     return train_test_split(new_data, hazard, test_size=0.25, random_state=1)
+
+
+def data_results(testing_classes, testing_inputs, alg_class):
+    print(confusion_matrix(testing_classes, alg_class.predict(testing_inputs)))
+
+    cm_display = ConfusionMatrixDisplay(
+        confusion_matrix=confusion_matrix(testing_classes, alg_class.predict(testing_inputs)))
+    cm_display.plot()
+    plt.xticks([0, 1], ["False", "True"])
+    plt.yticks([0, 1], ["False", "True"])
+    plt.xlabel('Predicted Hazard')
+    plt.ylabel('Actual Hazard')
+    plt.show()
+
+    print(classification_report(testing_classes, alg_class.predict(testing_inputs)))
