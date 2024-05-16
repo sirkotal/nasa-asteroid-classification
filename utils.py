@@ -58,3 +58,27 @@ def data_results(testing_classes, testing_inputs, alg_class):
     plt.show()
 
     print(classification_report(testing_classes, alg_class.predict(testing_inputs)))
+
+
+def display_menu():
+    print("---------------------------- NASA Asteroid Classification ----------------------------")
+    print("")
+    print("Please choose a classifier:")
+    print("")
+    print("1. Decision Trees")
+    print("2. K-Nearest Neighbors")
+    print("3. Support Vector Machines")
+    print("4. Artificial Neural Network")
+    print("5. Naive Bayes")
+    print("6. Random Forest")
+    print("")
+    print("i. Disclaimer")
+    print("")
+    print("0. Exit")
+    print("")
+
+    choice = input("> ")
+    if choice not in ['0', '1', '2', '3', '4', '5', '6', 'i']:
+        raise ValueError("Invalid choice")
+
+    return choice
