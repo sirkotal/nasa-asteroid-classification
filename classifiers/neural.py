@@ -3,14 +3,14 @@ from sklearn.metrics import accuracy_score
 from utils import data_preprocessing, data_results
 
 
-def train_ann(layer_n=25, act='relu', slv='adam'):
+def train_ann(layer_n=25, act='logistic', slv='adam'):
     (training_inputs,
      testing_inputs,
      training_classes,
      testing_classes) = data_preprocessing()
 
     ann_class = MLPClassifier(hidden_layer_sizes=(layer_n*4, layer_n*2, layer_n), activation=act, solver=slv,
-                              max_iter=200, random_state=1)
+                              max_iter=1000, random_state=1)
     ann_class.fit(training_inputs, training_classes)
 
     ann_class.score(testing_inputs, testing_classes)

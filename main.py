@@ -13,7 +13,7 @@ def main():
     #    sys.exit(1)
 
     # algorithm = sys.argv[1]
-    algorithm = "rf"
+    algorithm = "ann"
 
     if algorithm == 'decision_trees':
         train_decision_trees()
