@@ -1,10 +1,10 @@
 import sys
-from dtrees import train_decision_trees
-from knn import train_knn
-from rand_forest import train_rand_forest
-from svm import train_svm
-from neural import train_ann
-from naive_bayes import train_naive_bayes
+from classifiers.dtrees import train_decision_trees
+from classifiers.knn import train_knn
+from classifiers.rand_forest import train_rand_forest
+from classifiers.svm import train_svm
+from classifiers.neural import train_ann
+from classifiers.naive_bayes import train_naive_bayes
 
 
 def main():

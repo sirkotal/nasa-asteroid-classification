@@ -7,7 +7,7 @@ from sklearn.preprocessing import LabelEncoder
 
 def data_preprocessing():
     # Load the data
-    data = pd.read_csv('nasa.csv')
+    data = pd.read_csv('data/nasa.csv')
 
     if data.isna().any().any():
         data.fillna("NA", inplace=True)
@@ -25,9 +25,9 @@ def data_preprocessing():
     data.drop(columns=['Relative Velocity km per hr', 'Miles per hour'], inplace=True)
     data.drop(columns=['Miss Dist.(Astronomical)', 'Miss Dist.(lunar)', 'Miss Dist.(miles)'], inplace=True)
 
-    if (data['Equinox'].nunique() == 1):
+    if data['Equinox'].nunique() == 1:
         data.drop(columns=['Equinox'], inplace=True)
-    if (data['Orbiting Body'].nunique() == 1):
+    if data['Orbiting Body'].nunique() == 1:
         data.drop(columns=['Orbiting Body'], inplace=True)
 
     print(data.dtypes)
