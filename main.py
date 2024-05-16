@@ -1,6 +1,7 @@
 import sys
 from dtrees import train_decision_trees
 from knn import train_knn
+from rand_forest import train_rand_forest
 from svm import train_svm
 from neural import train_ann
 from naive_bayes import train_naive_bayes
@@ -12,7 +13,7 @@ def main():
     #    sys.exit(1)
 
     # algorithm = sys.argv[1]
-    algorithm = "decision_trees"
+    algorithm = "rf"
 
     if algorithm == 'decision_trees':
         train_decision_trees()
@@ -24,6 +25,8 @@ def main():
         train_ann()
     elif algorithm == 'nb':
         train_naive_bayes()
+    elif algorithm == 'rf':
+        train_rand_forest()
     else:
         sys.exit(1)
 
