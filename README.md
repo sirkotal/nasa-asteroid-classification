@@ -5,7 +5,7 @@
 
 ## 
 
-### 1. Install dependencies
+### 1. Installing dependencies
 
 Make sure you have installed the dependencies listed in ```specs.txt```. 
 To install them, go to the project's root and run this command on the terminal to install all the necessary dependencies:
