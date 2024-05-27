@@ -46,10 +46,10 @@ def data_preprocessing():
 
 
 def data_results(testing_classes, testing_inputs, alg_class):
-    print(confusion_matrix(testing_classes, alg_class.predict(testing_inputs)))
-
     cm_display = ConfusionMatrixDisplay(
-        confusion_matrix=confusion_matrix(testing_classes, alg_class.predict(testing_inputs)))
+        confusion_matrix=confusion_matrix(testing_classes, alg_class.predict(testing_inputs))
+    )
+
     cm_display.plot()
     plt.xticks([0, 1], ["False", "True"])
     plt.yticks([0, 1], ["False", "True"])
